@@ -39,7 +39,7 @@ class OfflineSQSInvokePlugin implements ServerlessPlugin {
 
         this.startHttp();
 
-        let resources: Record<string, any> = this.serverless.service.resources.Resources;
+        let resources: Record<string, any> = this.serverless.service.resources?.Resources;
 
         if (!resources) {
             return;

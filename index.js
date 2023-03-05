@@ -34,10 +34,10 @@ class OfflineSQSInvokePlugin {
         });
     }
     start() {
-        var _a, _b;
+        var _a, _b, _c;
         this.logging.log.notice('Starting Offline SQS invoke');
         this.startHttp();
-        let resources = this.serverless.service.resources.Resources;
+        let resources = (_a = this.serverless.service.resources) === null || _a === void 0 ? void 0 : _a.Resources;
         if (!resources) {
             return;
         }
@@ -45,7 +45,7 @@ class OfflineSQSInvokePlugin {
             if (resource.Type != 'AWS::SQS::Queue') {
                 continue;
             }
-            if (!((_a = resource.Properties) === null || _a === void 0 ? void 0 : _a.hasOwnProperty('QueueName'))) {
+            if (!((_b = resource.Properties) === null || _b === void 0 ? void 0 : _b.hasOwnProperty('QueueName'))) {
                 this.logging.log.error(`Queue '${name}' is missing QueueName property`);
                 continue;
             }
@@ -77,7 +77,7 @@ class OfflineSQSInvokePlugin {
                         this.logging.log.error(`Unknown resource: ${resourceName}`);
                         continue;
                     }
-                    if (!((_b = resource.Properties) === null || _b === void 0 ? void 0 : _b.hasOwnProperty('QueueName'))) {
+                    if (!((_c = resource.Properties) === null || _c === void 0 ? void 0 : _c.hasOwnProperty('QueueName'))) {
                         this.logging.log.error(`Resource '${resourceName}' is missing QueueName property`);
                         continue;
                     }
