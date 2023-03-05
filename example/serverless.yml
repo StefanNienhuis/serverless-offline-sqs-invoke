@@ -1,0 +1,26 @@
+service: sqs-example-service
+
+provider:
+    name: aws
+    region: eu-west-1
+    runtime: nodejs16.x
+
+plugins:
+    - ../
+    - serverless-offline
+
+functions:
+    test-function:
+        name: test-function
+        handler: handler
+
+        events:
+            - sqs:
+                  arn: !GetAtt TestQueue.Arn
+
+resources:
+    Resources:
+        TestQueue:
+            Type: AWS::SQS::Queue
+            Properties:
+                QueueName: test-queue
