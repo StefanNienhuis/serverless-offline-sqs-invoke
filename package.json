@@ -1,6 +1,6 @@
 {
     "name": "serverless-offline-sqs-invoke",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Local SQS Lambda invocation for Serverless Offline",
     "main": "index.js",
     "scripts": {
